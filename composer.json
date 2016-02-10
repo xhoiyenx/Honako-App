@@ -1,0 +1,19 @@
+{
+    "name": "hoiyen/myapp",
+    "description": "Honako Project",
+    "require": {
+        "symfony/var-dumper": "^3.0",
+        "slim/slim": "3.*",
+        "altorouter/altorouter": "1.*"
+    },
+    "authors": [
+        {
+            "name": "hoiyen",
+            "email": "hoiyen.2000@gmail.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "config": {
+        "vendor-dir": "includes/Libraries"
+    }
+}

@@ -1,0 +1,320 @@
+/**
+ * Global
+ */
+body {
+  background-color: #F5F5F5;
+  font-family: 'Open Sans', arial, sans-serif;
+}
+
+.ckbox {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;  
+}
+
+/**
+ * Font Changes
+ */
+
+/**
+ * Background Changes
+ */
+.signpanel {
+  background-image: none;
+}
+
+/**
+ * Left Menu Changes
+ */
+.leftpanel {
+  border-right: 1px solid #EAECF0;
+}
+
+.nav-quirk > li.active .children {
+  border-bottom: none;
+}
+
+/**
+ * Datatables / Regular table
+ */
+.table-inverse > thead > tr > th,
+.table-inverse > tfoot > tr > th {
+  color: #FFF;
+}
+
+.table > tbody > tr > td {
+  color: #000;
+  font-family: arial, sans-serif;
+  border-top-color: #DDD;
+}
+
+.dataTables_paginate .pagination > .paginate_button.next > a,
+.dataTables_paginate .pagination > .paginate_button.previous > a {
+  padding: 9px 15px;
+}
+
+.table-custom {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid #DDD;
+  background-color: #FFF;
+}
+
+.table-custom > thead > tr > th,
+.table-custom > tfoot > tr > th {
+  color: #000;
+  background-color: #FFF;
+}
+
+.table-cms > tbody > tr > td {
+  font-size: 13px;
+  font-family: "Open Sans", arial;
+}
+
+.table-options {
+  text-align: right;
+}
+
+/** LOGIN PAGE **/
+.signwrapper .input-group > .input-group-addon,
+.signwrapper .form-control {
+  border-radius: 0;
+}
+
+/**
+ * Panel
+ */
+.panel {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+.panel-actions {
+  margin-bottom: 10px;
+}
+
+/**
+ * Nestable
+ */
+.dd {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.dd-list {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dd-list .dd-list {
+  padding-left: 30px;
+}
+
+.dd-item,
+.dd-empty,
+.dd-placeholder {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.dd-handle {
+  display: block;
+  margin: 10px 0 0 0;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: move;
+  line-height: 2em;
+}
+
+.dd-item {
+  margin-top: 10px;
+}
+
+.dd-handle > span {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #444;
+}
+
+.dd-handle:hover {
+  color: #2ea8e5;
+  background: #fff;
+}
+
+.dd-item > button {
+  position: relative;
+  cursor: pointer;
+  float: left;
+  width: 25px;
+  height: 38px;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.dd-item > button:before {
+  display: block;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  text-indent: 0;
+}
+
+.dd-item > button.dd-expand:before {
+  content: "\f067";
+  font-family: 'FontAwesome';
+}
+
+.dd-item > button.dd-collapse:before {
+  content: "\f068";
+  font-family: 'FontAwesome';
+}
+
+.dd-expand {
+  display: none;
+}
+
+.dd-collapsed .dd-list,
+.dd-collapsed .dd-collapse {
+  display: none;
+}
+
+.dd-collapsed .dd-expand {
+  display: block;
+}
+
+.dd-empty,
+.dd-placeholder {
+  margin: 10px 0 0 0;
+  padding: 0;
+  min-height: 30px;
+  background: #f2fbff;
+  border: 1px dashed #b6bcbf;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.dd-empty {
+  border: 1px dashed #bbb;
+  min-height: 100px;
+  background-color: #e5e5e5;
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+.dd-dragel {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.dd-dragel > .dd-item .dd-handle {
+  margin-top: 0;
+}
+
+.dd-dragel .dd-handle {
+  box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, .1);
+}
+
+.dd-nochildren .dd-placeholder {
+  display: none;
+}
+
+.dd-actions {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+/**
+ * Modal
+ */
+.modal {
+  text-align: center;
+  padding: 0 !important;
+}
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px; /* Adjusts for spacing */
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+.modal-content {
+  border-radius: 0;
+}
+.modal-body {
+  max-height: calc(100vh - 212px);
+  overflow-y: auto;
+}
+
+/**
+ * Filemanager
+ */
+.panel-inverse-full .thmb h5.fm-title a {
+  color: #000;
+}
+
+/**
+ * Configuration
+ */
+.cms_content_configuration a {
+  text-align: center;
+  display: block;
+  padding: 15px 25px;
+  font-weight: bold;
+  min-height: 70px;
+  max-height: 70px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #000;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;  
+}
+
+.cms_content_configuration a:hover {
+  background-color: #206696;
+  color: #FFF;
+}
+
