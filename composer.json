@@ -3,8 +3,8 @@
     "description": "Honako Project",
     "require": {
         "symfony/var-dumper": "^3.0",
-        "slim/slim": "3.*",
-        "altorouter/altorouter": "1.*"
+        "altorouter/altorouter": "1.*",
+        "illuminate/container": "4.*"
     },
     "authors": [
         {
@@ -15,5 +15,10 @@
     "minimum-stability": "alpha",
     "config": {
         "vendor-dir": "includes/Libraries"
+    },
+    "autoload": {
+        "psr-4": {
+            "Honako\\": "includes/Honako"
+        }
     }
 }

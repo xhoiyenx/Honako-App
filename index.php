@@ -1,15 +1,14 @@
 <?php
-$b = microtime();
+define( 'START_TIME', microtime() );
 require_once 'includes/Libraries/autoload.php';
 
-$router = new AltoRouter();
-$router->map( 'GET', '/', function() {
-  echo 'hello world';
-}, 'index');
+$app = new Honako\Foundation\Application;
 
-$match = $router->match();
+$router = $app['router'];
+$router->get( '/', 'function', 'index' );
 
-call_user_func_array( $match['target'], $match['params'] );
+$match = $router->run();
 
-dump( microtime() - $b );
-dump( $match );
+dump($match);
+
+echo microtime() - START_TIME;
