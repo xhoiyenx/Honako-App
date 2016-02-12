@@ -7,8 +7,24 @@ $app = new Honako\Foundation\Application;
 $router = $app['router'];
 $router->get( '/', 'function', 'index' );
 
-$match = $router->run();
+$router->group( ['prefix' => 'administrator'], function($router){
 
-dump($match);
+	$router->get( '/', 'dashboard', 'adm.dashboard' );
+
+});
+
+$router->group( ['prefix' => 'www'], function($router){
+
+	$router->group( ['prefix' => 'inside'], function($router){
+		$router->get( '/', 'dashboard', 'www.dashboard' );
+	});
+	
+});
+
+$router->group( null, function(){
+	
+} );
+
+dump($router->routes());
 
 echo microtime() - START_TIME;
