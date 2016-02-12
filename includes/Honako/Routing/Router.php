@@ -1,24 +1,22 @@
 <?php
 namespace Honako\Routing;
+
+use Exception;
 use \AltoRouter;
 use Closure;
 
 class Router
 {
-  const VERSION = '0.0.1';
+  const VERSION = '1.0.0';
 
   protected $routes;
   protected $prefix;
   protected $namespace;
-<<<<<<< HEAD
   protected $is_group = false;
-=======
->>>>>>> origin/master
 
   public function __construct()
   {
 
-<<<<<<< HEAD
   }
 
   public function get( $uri, $action, $name = null )
@@ -29,6 +27,14 @@ class Router
   public function post( $uri, $action, $name = null )
   {
     $this->call( 'POST', $uri, $action, $name );
+  }
+
+  public function match( $method = array(), $uri, $action, $name = null )
+  {
+    if ( count($method) > 1 ) {
+      $method = implode('|', $method);
+    }
+    $this->call( $method, $uri, $action, $name );
   }
 
   public function call( $method, $uri, $action, $name = null )
@@ -45,7 +51,7 @@ class Router
     $this->routes[] = [$method, $uri, $action, $name];
   }
 
-  public function group( $options = array(), Closure $closure )
+  public function group( $options = array(), $function )
   {
     if ( ! empty($options) ) {
 
@@ -77,56 +83,63 @@ class Router
       $this->is_group = true;
     }
     else {
-      throw new \Exception( 'Router group parameter is empty' );
+      throw new Exception( 'Router group parameter is empty' );
     }
 
-    call_user_func( $closure, $this );
+    call_user_func( $function, $this );
 
     $this->is_group = false;
   }
 
   public function routes()
   {
-=======
+    return $this->routes;
   }
 
-  public function get( $uri, $action, $name = null )
+  public function process( $match )
   {
-    $this->call( 'GET', $uri, $action, $name );
-  }
-
-  public function post( $uri, $action, $name = null )
-  {
-    $this->call( 'POST', $uri, $action, $name );
-  }
-
-  public function call( $method, $uri, $action, $name = null )
-  {
-    if ( ! empty($this->prefix) )
-      $uri = $this->prefix . '/' . trim($uri, '/');
-
-    $this->routes[] = [$method, $uri, $action, $name];
-  }
-
-  public function group( $options = array(), Closure $closure )
-  {
-    if ( ! empty($options) ) {
-
+    if ( ! $match ) {
+      # url not found
+      # what will you do with this information
+      throw new Exception('Error: Url not found', 404);
     }
     else {
-      throw new \Exception( 'Router group parameter is empty' );
+      # run given action
+      if ( isset( $match['target'] ) ) {
+        return $this->processAction( $match['target'], $match['params'] );
+      }
+      else {
+        throw new Exception('Error: Route target is not defined', 404);
+      }
     }
-    call_user_func( $closure, $this );
   }
 
-  public function routes()
+  public function processAction( $action, $param )
   {
->>>>>>> origin/master
-    return $this->routes;
+    # action will be formatted like 
+    # class@function
+    if ( ! empty( $action ) ) {
+      $do = explode('@', $action);
+    }
+
+    $class    = $do[0];
+    $function = $do[1];
+
+    if( ! class_exists($class) ) {
+      throw new Exception('Error: Route target not found', 404);
+    }
+    elseif ( ! in_array( $function, get_class_methods($class) ) ) {
+      throw new Exception('Error: Route method not found', 404);
+    }
+    else {
+      return call_user_func_array(array( new $class, $function ), $param);
+    }
   }
 
   public function run()
   {
-
+    $router = new AltoRouter( $this->routes );
+    $match  = $router->match();
+    return $this->process($match);
   }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Honako\Foundation;
 
+use Exception;
 use Illuminate\Container\Container;
 use Honako\Routing\Router;
 
@@ -14,4 +15,29 @@ class Application extends Container
       return new Router;
     });
   }
+
+  public function run()
+  {
+  	# make sure router is bound
+  	if ( ! $this->bound('router') ) {
+  		throw new Exception( 'Router not bound' );
+  	}
+  	else {
+  		$router 	= $this['router'];
+
+  		try{
+  			$response = $router->run();
+  		}
+  		catch ( Exception $e ) {
+  			$response = $e;
+  		}
+  		
+  		# handling response here
+  		if ( is_string($response) ) {
+  			echo $response;
+  		}
+  	}
+
+  }
+
 }
