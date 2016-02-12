@@ -10,11 +10,15 @@ class Router
   protected $routes;
   protected $prefix;
   protected $namespace;
+<<<<<<< HEAD
   protected $is_group = false;
+=======
+>>>>>>> origin/master
 
   public function __construct()
   {
 
+<<<<<<< HEAD
   }
 
   public function get( $uri, $action, $name = null )
@@ -83,6 +87,41 @@ class Router
 
   public function routes()
   {
+=======
+  }
+
+  public function get( $uri, $action, $name = null )
+  {
+    $this->call( 'GET', $uri, $action, $name );
+  }
+
+  public function post( $uri, $action, $name = null )
+  {
+    $this->call( 'POST', $uri, $action, $name );
+  }
+
+  public function call( $method, $uri, $action, $name = null )
+  {
+    if ( ! empty($this->prefix) )
+      $uri = $this->prefix . '/' . trim($uri, '/');
+
+    $this->routes[] = [$method, $uri, $action, $name];
+  }
+
+  public function group( $options = array(), Closure $closure )
+  {
+    if ( ! empty($options) ) {
+
+    }
+    else {
+      throw new \Exception( 'Router group parameter is empty' );
+    }
+    call_user_func( $closure, $this );
+  }
+
+  public function routes()
+  {
+>>>>>>> origin/master
     return $this->routes;
   }
 
