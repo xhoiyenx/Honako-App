@@ -14,6 +14,8 @@ class Application extends Container
     $this->bindShared('router', function(){
       return new Router;
     });
+
+    $this->instance('Illuminate\Container\Container', $this);
   }
 
   public function run()

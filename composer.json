@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Honako\\": "includes/Honako"
+            "Honako\\": "includes/Honako",
+            "App\\": "app"
         }
     }
 }
