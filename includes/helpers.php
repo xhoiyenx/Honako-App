@@ -1,5 +1,5 @@
 <?php
-function app( $make = null )
+function _app( $make = null )
 {
   global $app;
   if ( ! empty( $make ) ) {

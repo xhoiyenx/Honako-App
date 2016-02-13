@@ -4,7 +4,7 @@
     "require": {
         "symfony/var-dumper": "^3.0",
         "altorouter/altorouter": "1.*",
-        "illuminate/container": "4.*"
+        "illuminate/database": "4.*"
     },
     "authors": [
         {
