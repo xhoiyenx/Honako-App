@@ -4,6 +4,8 @@ namespace Honako\Foundation;
 use Exception;
 use Illuminate\Container\Container;
 use Honako\Routing\Router;
+use Honako\Helper\Filesystem;
+use Illuminate\Database\Capsule\Manager;
 
 class Application extends Container
 {
@@ -17,13 +19,39 @@ class Application extends Container
 
   public function __construct()
   {
-    $this->bindShared('router', function(){
-      return new Router;
+    $this->baseBindings();
+  }
+
+  protected function baseBindings()
+  {
+
+    /*
+    $this->singleton('view', function(){
+      return new Filesystem;
     });
 
-    $this->instance('Illuminate\Container\Container', $this);
+    $this->bindShared('db', function(){
+      
+      $capsule = new Manager;
+      $capsule->addConnection([
+        'driver'    => 'mysql',
+        'host'      => 'localhost',
+        'database'  => 'cms',
+        'username'  => 'root',
+        'password'  => '1234',
+        'charset'   => 'utf8',
+        'collation' => 'utf8_general_ci',
+        'prefix'    => '',
+      ]);
 
-    $this->register( new \Illuminate\Events\EventServiceProvider($this) );
+      $capsule->bootEloquent();
+
+      return $capsule;
+    });
+    */
+
+    $this->register('Illuminate\Events\EventServiceProvider');
+    $this->register('Honako\Routing\RouterServiceProvider');
   }
 
   public function register($provider, $options = array(), $force = false)
@@ -81,6 +109,15 @@ class Application extends Container
   public function resolveProviderClass($provider)
   {
     return new $provider($this);
+  }
+
+  public function boot()
+  {
+    if ($this->booted) return;
+
+    array_walk($this->serviceProviders, function($p) { $p->boot(); });
+
+    $this->booted = true;
   }  
 
   public function run()
@@ -90,15 +127,17 @@ class Application extends Container
   		throw new Exception( 'Router not bound' );
   	}
   	else {
+      $this->boot();
+
   		$router 	= $this['router'];
 
   		try{
   			$response = $router->run();
   		}
   		catch ( Exception $e ) {
-  			$response = $e;
+  			$response = $e->getMessage();
   		}
-  		
+
   		# handling response here
   		if ( is_string($response) ) {
   			echo $response;

@@ -40,13 +40,13 @@ class Router
   public function call( $method, $uri, $action, $name = null )
   {
     if ( ! empty($this->prefix) )
-      $uri = trim($this->prefix, '/') . '/' . trim($uri, '/');
+      $uri = '/' . trim($this->prefix, '/') . '/' . trim($uri, '/');
 
     if ( ! empty($this->namespace) )
       $action = trim($this->namespace, '\\') . '\\' . $action;
 
     if ( $uri != '/')
-      $uri = trim($uri, '/');
+      $uri = rtrim($uri, '/');
 
     $this->routes[] = [$method, $uri, $action, $name];
   }

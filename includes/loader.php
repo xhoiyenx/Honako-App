@@ -5,10 +5,18 @@
  */
 require_once 'Libraries/autoload.php';
 
+use Illuminate\Support\Facades\Facade;
+
 /**
  * Load application
  */
 $app = new Honako\Foundation\Application;
+
+$app->instance('app', $app);
+
+Facade::clearResolvedInstances();
+
+Facade::setFacadeApplication($app);
 
 /**
  * Load helpers
