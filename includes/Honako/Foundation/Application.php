@@ -2,10 +2,9 @@
 namespace Honako\Foundation;
 
 use Exception;
+use Illuminate\Config\FileLoader;
 use Illuminate\Container\Container;
-use Honako\Routing\Router;
-use Honako\Helper\Filesystem;
-use Illuminate\Database\Capsule\Manager;
+use Illuminate\Filesystem\Filesystem;
 
 class Application extends Container
 {
@@ -24,34 +23,18 @@ class Application extends Container
 
   protected function baseBindings()
   {
-
-    /*
-    $this->singleton('view', function(){
-      return new Filesystem;
-    });
-
-    $this->bindShared('db', function(){
-      
-      $capsule = new Manager;
-      $capsule->addConnection([
-        'driver'    => 'mysql',
-        'host'      => 'localhost',
-        'database'  => 'cms',
-        'username'  => 'root',
-        'password'  => '1234',
-        'charset'   => 'utf8',
-        'collation' => 'utf8_general_ci',
-        'prefix'    => '',
-      ]);
-
-      $capsule->bootEloquent();
-
-      return $capsule;
-    });
-    */
-
     $this->register('Illuminate\Events\EventServiceProvider');
     $this->register('Honako\Routing\RouterServiceProvider');
+  }
+
+  public function loadProviders()
+  {
+    $providers = $this['config']['app.providers'];
+    if ( count($providers) > 0 ) {
+      foreach ( $providers as $provider ) {
+        $this->register($provider);
+      }
+    }
   }
 
   public function register($provider, $options = array(), $force = false)
@@ -110,6 +93,31 @@ class Application extends Container
   {
     return new $provider($this);
   }
+
+  public function bindInstallPaths(array $paths)
+  {
+    $this->instance('path', realpath($paths['app']));
+
+    // Here we will bind the install paths into the container as strings that can be
+    // accessed from any point in the system. Each path key is prefixed with path
+    // so that they have the consistent naming convention inside the container.
+    foreach (array_except($paths, array('app')) as $key => $value)
+    {
+      $this->instance("path.{$key}", realpath($value));
+    }
+  }
+
+  public function getConfigLoader()
+  {
+    return new FileLoader(new Filesystem, $this['path'].'/config');
+  }
+
+  public function getProviderRepository()
+  {
+    $manifest = $this['config']['app.manifest'];
+
+    return new ProviderRepository(new Filesystem, $manifest);
+  }  
 
   public function boot()
   {
