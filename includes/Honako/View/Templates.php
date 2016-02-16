@@ -1,14 +1,21 @@
 <?php
-namespace Honako\Helper;
+namespace Honako\View;
 use Exception;
+use Honako\Foundation\Application;
 
-class Filesystem
+class Templates
 {
-  protected $template = null;
+  protected $template;
+  protected $app;
+
+  public function __construct( Application $app )
+  {
+    $this->app = $app;
+  }
 
   public function setTemplatePath( $path )
   {
-    if ( ! is_dir($path) ) {
+    if ( ! $this->app['files']->isDirectory($path) ) {
       throw new Exception ('Error: Template path not found');
     }
     else {
@@ -19,9 +26,9 @@ class Filesystem
   public function show( $filepath, $variables = array() )
   {
     $file = $this->template . $filepath . '.php';
-    if ( file_exists($file) ) {
+    if ( $this->app['files']->exists($file) ) {
       extract($variables);
-      return include $file;
+      return require $file;
     }
     else {
       throw new Exception ('Error: Template file not found');

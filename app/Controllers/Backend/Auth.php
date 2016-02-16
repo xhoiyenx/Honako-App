@@ -12,9 +12,7 @@ class Auth extends BaseController
 
   public function login()
   {
-    $user = new User;
-
     $name = 'foo';
-    return $this->app['view']->show('auth/login');
+    return template()->show('auth/login');
   }
 }

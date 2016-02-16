@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers\Backend;
-
-use Honako\Helper\Filesystem;
-class BaseController
+abstract class BaseController
 {
   protected $app;
   public function __construct()
@@ -13,6 +11,6 @@ class BaseController
 
   private function registerView()
   {
-    $this->app['view']->setTemplatePath( __DIR__ . '/templates/' );
+    template()->setTemplatePath( __DIR__ . '/templates/' );
   }
 }

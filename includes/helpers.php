@@ -1,11 +1,7 @@
 <?php
-function _app( $make = null )
+function template( $path = null )
 {
-  global $app;
-  if ( ! empty( $make ) ) {
-    return $app->make($make);
-  }
-  else {
-    return $app;
-  }
+	if (empty($path)) {
+		return app('template');
+	}
 }

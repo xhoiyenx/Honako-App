@@ -55,5 +55,7 @@ return array(
 
   'providers' => array(
     'Illuminate\Database\DatabaseServiceProvider', #DATABASE
+    'Illuminate\Filesystem\FilesystemServiceProvider', #FILESYSTEM
+    'Honako\View\TemplatesServiceProvider', #TEMPLATES
   ),
 );
