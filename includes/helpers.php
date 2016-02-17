@@ -5,3 +5,10 @@ function template( $path = null )
 		return app('template');
 	}
 }
+
+function twig( $path = null )
+{
+	if (empty($path)) {
+		return app('twig');
+	}
+}
