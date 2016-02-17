@@ -6,7 +6,7 @@ abstract class BaseController
   public function __construct()
   {
     $this->app = app();
-    $this->registerView();
+    #$this->registerView();
   }
 
   private function registerView()

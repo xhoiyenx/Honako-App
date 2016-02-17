@@ -54,8 +54,9 @@ return array(
   'fallback_locale' => 'en',
 
   'providers' => array(
-    'Illuminate\Database\DatabaseServiceProvider', #DATABASE
+    #'Illuminate\Database\DatabaseServiceProvider', #DATABASE
     'Illuminate\Filesystem\FilesystemServiceProvider', #FILESYSTEM
-    'Honako\View\TemplatesServiceProvider', #TEMPLATES
+    #'Honako\View\TemplatesServiceProvider', #TEMPLATES
+    'Honako\View\TwigServiceProvider', #TEMPLATES
   ),
 );
