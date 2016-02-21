@@ -2,7 +2,7 @@
 namespace App\Controllers\Site;
 use App\Models\User;
 
-class Pages extends BaseController
+class Pages
 {
   public function homepage()
   {
