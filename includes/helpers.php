@@ -12,3 +12,8 @@ function twig( $path = null )
 		return app('twig');
 	}
 }
+
+function settings( $foo )
+{
+	return '';
+}

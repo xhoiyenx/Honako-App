@@ -12,8 +12,5 @@ class Auth extends BaseController
 
   public function login()
   {
-    #$name = 'foo';
-    #return template()->show('auth/login');
-    return twig()->make('homepage.twig');
   }
 }

@@ -6,13 +6,5 @@ abstract class BaseController
   public function __construct()
   {
     $this->app = app();
-    $this->registerView();
-  }
-
-  private function registerView()
-  {
-    $config = $this->app['config'];
-    twig()->setPath( $config['app.theme.backend'] );
-    #template()->setTemplatePath( __DIR__ . '/templates/' );
   }
 }

@@ -23,7 +23,6 @@ class Application extends Container
 
   protected function baseBindings()
   {
-    $this->register('Illuminate\Events\EventServiceProvider');
     $this->register('Honako\Routing\RouterServiceProvider');
   }
 
@@ -84,7 +83,8 @@ class Application extends Container
 
   protected function markAsRegistered($provider)
   {
-    $this['events']->fire($class = get_class($provider), array($provider));
+    $class = get_class($provider);
+    #$this['events']->fire($class = get_class($provider), array($provider));
     $this->serviceProviders[] = $provider;
     $this->loadedProviders[$class] = true;
   }
@@ -117,7 +117,12 @@ class Application extends Container
     $manifest = $this['config']['app.manifest'];
 
     return new ProviderRepository(new Filesystem, $manifest);
-  }  
+  }
+
+  public function booted()
+  {
+    return $this->booted;
+  }
 
   public function boot()
   {
@@ -147,7 +152,7 @@ class Application extends Container
   		}
 
   		# handling response here
-  		if ( is_string($response) ) {
+  		if ( is_string($response) OR is_a($response, 'Illuminate\View\View') ) {
   			echo $response;
   		}
   	}
