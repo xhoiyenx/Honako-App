@@ -27,18 +27,6 @@ $app->instance('config', $config = new Config(
 # load providers
 $app->loadProviders();
 
-/*
-$app->instance('app', $app);
-
-Facade::clearResolvedInstances();
-
-Facade::setFacadeApplication($app);
-
-$app->instance('config', $config = new Config(
-  $app->getConfigLoader(), $env
-));
-*/
-
 /**
  * Load helpers
  */

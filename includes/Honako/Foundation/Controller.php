@@ -7,7 +7,17 @@ namespace Honako\Foundation;
  *
  * - Controller who extends from this class should set default template path
  */
-class Controller
+abstract class Controller
 {
+	protected $_view;
+	protected $_theme;
+	protected $app;
 
+	public function __construct()
+	{
+		$this->app = app();
+
+		if ( ! empty($this->_theme))
+			$this->app['view']->setPath( $this->_theme );
+	}
 }

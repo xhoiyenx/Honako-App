@@ -2,24 +2,6 @@
 return array(
   /*
   |--------------------------------------------------------------------------
-  | Administration Info
-  |--------------------------------------------------------------------------
-  */
-  'view_path'   => base_path() . '\view',
-  'view_cache'  => base_path() . '\view_cache',
-
-  /*
-  |--------------------------------------------------------------------------
-  | Front End Theme Path
-  |--------------------------------------------------------------------------
-  */
-  'theme' => array(
-    'backend' => 'backend',
-    'front'   => 'www',
-    ),
-
-  /*
-  |--------------------------------------------------------------------------
   | Encryption Key
   |--------------------------------------------------------------------------
   |
@@ -59,6 +41,7 @@ return array(
   'fallback_locale' => 'en',
 
   'providers' => array(
+    'Illuminate\Filesystem\FilesystemServiceProvider',
     'Honako\View\TemplatesServiceProvider'
   ),
 );

@@ -3,6 +3,7 @@
     "description": "Honako Project",
     "require": {
         "symfony/var-dumper": "^3.0",
+        "symfony/http-foundation": "^3.0",
         "altorouter/altorouter": "1.*",
         "illuminate/container": "4.2.*",
         "illuminate/config": "4.2.*"

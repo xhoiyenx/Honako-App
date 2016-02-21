@@ -13,6 +13,11 @@ function twig( $path = null )
 	}
 }
 
+function view()
+{
+	return app('view');
+}
+
 function settings( $foo )
 {
 	return '';

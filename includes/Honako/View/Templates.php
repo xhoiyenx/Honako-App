@@ -5,14 +5,21 @@ use Honako\Foundation\Application;
 
 class Templates
 {
+  const VERSION = '0.0.1';
+
   protected $template;
   protected $app;
   protected $view;  
 
   public function __construct( Application $app )
   {
-    $this->app = $app;
-    $this->view = $this->app['config']['app.view_path'];
+    $this->app  = $app;
+    $this->view = $this->app['config']['view.view_path'];
+  }
+
+  public function setView( $path )
+  {
+    $this->view = $path;
   }
 
   public function setPath( $theme )
