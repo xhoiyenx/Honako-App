@@ -5,6 +5,9 @@ use Exception;
 use Illuminate\Config\FileLoader;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+
 
 class Application extends Container
 {
@@ -23,6 +26,8 @@ class Application extends Container
 
   protected function baseBindings()
   {
+    $request = SymfonyRequest::createFromGlobals();
+    $this->instance( 'request', $request);
     $this->register('Honako\Routing\RouterServiceProvider');
   }
 
