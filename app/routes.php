@@ -1,7 +1,7 @@
 <?php
 $router = $app->make('router');
 
-$router->group(['namespace' => 'App\Controllers\Backend', 'prefix' => 'backend'], function($router) {
+$router->group(['namespace' => 'App\Controllers\Backend', 'prefix' => 'admin'], function($router) {
   $router->get('/', 'Auth@login');
 });
 

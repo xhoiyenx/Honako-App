@@ -7,6 +7,5 @@ class Auth extends BaseController
 {
   public function login()
   {
-    dump( $this->app );
   }
 }

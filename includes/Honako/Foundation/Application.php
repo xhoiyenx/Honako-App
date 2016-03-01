@@ -28,6 +28,7 @@ class Application extends Container
   {
     $request = SymfonyRequest::createFromGlobals();
     $this->instance( 'request', $request);
+    $this->register('Illuminate\Events\EventServiceProvider');
     $this->register('Honako\Routing\RouterServiceProvider');
   }
 
@@ -89,7 +90,7 @@ class Application extends Container
   protected function markAsRegistered($provider)
   {
     $class = get_class($provider);
-    #$this['events']->fire($class = get_class($provider), array($provider));
+    $this['events']->fire($class = get_class($provider), array($provider));
     $this->serviceProviders[] = $provider;
     $this->loadedProviders[$class] = true;
   }
@@ -157,7 +158,7 @@ class Application extends Container
   		}
 
   		# handling response here
-  		if ( is_string($response) OR is_a($response, 'Illuminate\View\View') ) {
+  		if ( is_string($response) ) {
   			echo $response;
   		}
   	}
