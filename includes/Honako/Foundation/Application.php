@@ -27,7 +27,7 @@ class Application extends Container
   protected function baseBindings()
   {
     $request = SymfonyRequest::createFromGlobals();
-    $this->instance( 'request', $request);
+    $this->instance('request', $request);
     $this->register('Illuminate\Events\EventServiceProvider');
     $this->register('Honako\Routing\RouterServiceProvider');
   }

@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-
-<!-- Mirrored from html.nkdev.info/youplay/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Mar 2016 11:24:41 GMT -->
-<!-- Added by HTTrack --><!-- /Added by HTTrack -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +10,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/youplay.min.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo assets('css/bootstrap.min.css')?>" />
+  <link rel="stylesheet" type="text/css" href="<?php echo assets('css/font-awesome.min.css')?>" />
+  <link rel="stylesheet" type="text/css" href="<?php echo assets('css/owl.carousel.css')?>" />
+  <link rel="stylesheet" type="text/css" href="<?php echo assets('css/youplay.min.css')?>" />
 
   <!--[if lt IE 9]>
     <script src="../assets/plugins/html5shiv/html5shiv.min.js"></script>
@@ -920,31 +916,31 @@
   <!-- /Search Block -->
 
   <!-- jQuery -->
-  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/jquery.min.js')?>"></script>
 
   <!-- CSS Shapes Polyfill -->
-  <script type="text/javascript" src="assets/js/shapes-polyfill.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/shapes-polyfill.min.js')?>"></script>
 
   <!-- Hexagon Progress -->
-  <script type="text/javascript" src="assets/js/jquery.hexagonprogress.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/jquery.hexagonprogress.min.js')?>"></script>
 
   <!-- Bootstrap -->
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/bootstrap.min.js')?>"></script>
 
   <!-- Skrollr -->
-  <script type="text/javascript" src="assets/js/skrollr.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/skrollr.min.js')?>"></script>
 
   <!-- Smooth Scroll -->
-  <script type="text/javascript" src="assets/js/smoothscroll.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/smoothscroll.js')?>"></script>
 
   <!-- Owl Carousel -->
-  <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/owl.carousel.min.js')?>"></script>
 
   <!-- Countdown -->
-  <script type="text/javascript" src="assets/js/jquery.countdown.min.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/jquery.countdown.min.js')?>"></script>
 
   <!-- youplay -->
-  <script type="text/javascript" src="assets/js/youplay.js"></script>
+  <script type="text/javascript" src="<?php echo assets('js/youplay.js')?>"></script>
   <!-- init youplay -->
   <script>
     if(typeof youplay !== 'undefined') {
@@ -956,11 +952,11 @@
 
   <script type="text/javascript">
     $(".countdown").each(function() {
-        $(this).countdown($(this).attr('data-end'), function(event) {
-          $(this).text(
-            event.strftime('%D days %H:%M:%S')
-          );
-        });
+      $(this).countdown($(this).attr('data-end'), function(event) {
+        $(this).text(
+          event.strftime('%D days %H:%M:%S')
+        );
+      });
     })
   </script>
 

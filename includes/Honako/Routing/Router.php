@@ -4,6 +4,7 @@ namespace Honako\Routing;
 use Exception;
 use \AltoRouter;
 use Closure;
+use Honako\Foundation\Application;
 
 class Router
 {
@@ -13,10 +14,11 @@ class Router
   protected $prefix;
   protected $namespace;
   protected $is_group = false;
+  protected $app;
 
-  public function __construct()
+  public function __construct( Application $app )
   {
-
+    $this->app = $app;
   }
 
   public function get( $uri, $action, $name = null )
@@ -141,5 +143,11 @@ class Router
     $router = new AltoRouter( $this->routes );
     $match  = $router->match();
     return $this->process($match);
+  }
+
+  public function baseUrl()
+  {
+    $request = $this->app['request'];
+    return rtrim( $request->getSchemeAndHttpHost().$request->getBaseUrl(), '/' );
   }
 }

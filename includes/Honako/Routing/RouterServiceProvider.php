@@ -6,6 +6,6 @@ class RouterServiceProvider extends ServiceProvider
 {
   public function register()
   {
-    $this->app->bindShared('router', function() { return new Router; });
+    $this->app->bindShared('router', function() { return new Router($this->app); });
   }
 }

@@ -18,6 +18,11 @@ function view()
 	return app('view');
 }
 
+function assets( $path )
+{
+  return view()->asset( $path );
+}
+
 function settings( $foo )
 {
 	return '';

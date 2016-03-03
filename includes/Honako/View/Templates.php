@@ -9,7 +9,8 @@ class Templates
 
   protected $template;
   protected $app;
-  protected $view;  
+  protected $view;
+  protected $theme;
 
   public function __construct( Application $app )
   {
@@ -24,11 +25,13 @@ class Templates
 
   public function setPath( $theme )
   {
+    $this->theme = $theme;
+
     if ( ! $this->app['files']->isDirectory($this->view . '/' . $theme) ) {
       throw new Exception ('Error: Template path not found');
     }
     else {
-      $this->template = $this->view . '/' . $theme;
+      $this->template = $this->view . '/' . $theme . '/';
     }
   }
 
@@ -42,5 +45,18 @@ class Templates
     else {
       throw new Exception ('Error: Template file not found');
     }
+  }
+
+  public function asset( $path = '' )
+  {
+    $base = $this->app['router']->baseUrl();
+
+    # get base view path
+    $view = str_replace( base_path(), '', $this->view);
+    $view = str_replace( '\\', '/', $view);
+
+    $asset = '/assets/';
+
+    return $base . $view . '/' . $this->theme . $asset . $path;
   }
 }

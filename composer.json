@@ -3,12 +3,11 @@
     "description": "Honako Project",
     "require": {
         "symfony/var-dumper": "^3.0",
-        "symfony/http-foundation": "^3.0",
+        "symfony/http-foundation": "2.8.*",
         "altorouter/altorouter": "1.*",
         "illuminate/container": "4.2.*",
         "illuminate/config": "4.2.*",
         "illuminate/database": "4.2.*",
-        "catfan/medoo": "*"
     },
     "authors": [
         {
